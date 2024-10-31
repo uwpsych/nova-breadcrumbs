@@ -54,6 +54,7 @@ class Breadcrumb extends NovaBreadcrumb {
 
 
         if ($breadcrumb->shouldLinkToParent($resourceClass)) {
+            $resourceClass = is_string($resourceClass) ? new $resourceClass(new $resourceClass::$model) : $resourceClass;
             $tabsQuery = $breadcrumb->getTabs($resourceClass);
             if ($tabsQuery) {
                 $breadcrumb->path = $tabsQuery;
